@@ -42,7 +42,7 @@
 
             var header = ['ID', '名前', '会社名', '部署', '役職'];
             var table = document.querySelector("table");
-            //ヘッダー（TH）
+            //ヘッダー（th）
             var row = table.insertRow(-1);
             var th0 = document.createElement("th");
             row.appendChild(th0);
@@ -54,7 +54,7 @@
             }
             table.width = 30 + 100 * header.length;
 
-            //データ行（TR）
+            //データ行（tr）
             for (var r = 1; r <= 100; r++) {
                 var row = table.insertRow(-1);
                 var cell1 = row.insertCell(-1);
