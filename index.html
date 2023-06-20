@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>システム構築課題</title>
+    </head>
+    <body>
+        <table>
+            <tbody id="memberList"></tbody>
+        </table>
+        <script>
+            const memberList = document.getElementById("memberList");
+            // jsonファイルから情報を取得
+            async function getMembers() {
+                const response = await fetch(
+                    "date.json"
+                );
+                const members = await response.json();
+                return members;
+            }
+            //  リストアップするmember
+            async function listMembers() {
+                const members = await getMembers();
+                members.forEach(addList);
+            }
+            // リストに追加
+            function addList(member) {
+                const tr = document.createElement("tr");
+                memberList.appendChild(tr);
+                const objArray = Object.entries(member);
+                objArray.forEach((key) => {
+                    const td = document.createElement("td");
+                    td.textContent = key[1];
+                    tr.appendChild(td);
+                });
+            }
+            window.addEventListener("load", listMembers);
+
+
+            var header = ['ID', '名前', '会社名', '部署', '役職'];
+            var table = document.querySelector("table");
+            //ヘッダー（TH）
+            var row = table.insertRow(-1);
+            var th0 = document.createElement("th");
+            row.appendChild(th0);
+            for (var i = 0; i < header.length; i++) {
+                var th = document.createElement("th");
+                row.appendChild(th);
+                th.innerHTML = header[i];
+                th.width = 100;
+            }
+            table.width = 30 + 100 * header.length;
+
+            //データ行（TR）
+            for (var r = 1; r <= 100; r++) {
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(-1);
+                for (c = 1; c <= header.length; c++) {
+                    var cell = row.insertCell(-1);
+                    cell.className = 'value';
+                    cell.setAttribute('contenteditable', 'true');
+                    cell.setAttribute('id', 'R' + r + 'C' + c);
+                }
+            }
+        </script>
+    </body>
+</html>
