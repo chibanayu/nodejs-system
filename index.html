@@ -8,63 +8,72 @@
         <title>システム構築課題</title>
     </head>
     <body>
+        <ul id="up"></ul>
         <table>
-            <tbody id="memberList"></tbody>
+            <thead id="list">
+                <tr>
+                    <th onclick="textClick()">ID</th>
+                    <th onclick="textClick()">名前</th>
+                    <th onclick="textClick()">会社名</th>
+                    <th onclick="textClick()">部署</th>
+                    <th onclick="textClick()">役職</th>
+                </tr>
+            </thead>
+            <tbody id="parent">
+                <tr class="member">
+                </tr>
+            </tbody>
         </table>
         <script>
-            const memberList = document.getElementById("memberList");
-            // jsonファイルから情報を取得
-            async function getMembers() {
-                const response = await fetch(
-                    "date.json"
-                );
-                const members = await response.json();
-                return members;
+            //data.jsonを持ってきてusersで使えるようにする
+            async function callApi() {
+                const res = await fetch('data.json');
+                const users = await res.json();
+                return users;
             }
-            //  リストアップするmember
-            async function listMembers() {
-                const members = await getMembers();
-                members.forEach(addList);
-            }
-            // リストに追加
-            function addList(member) {
-                const tr = document.createElement("tr");
-                memberList.appendChild(tr);
-                const objArray = Object.entries(member);
-                objArray.forEach((key) => {
-                    const td = document.createElement("td");
-                    td.textContent = key[1];
-                    tr.appendChild(td);
+            async function lists() {
+                let member = await callApi();
+                member.forEach(function (value) {
+                    let up = document.querySelector('#up');
+                    up.insertAdjacentHTML('beforeend', `<li>ID${value.id}　名前${value.name}　会社名${value.company}　部署${value.division}　役職${value.title}</li>`);
                 });
             }
-            window.addEventListener("load", listMembers);
-
-
-            var header = ['ID', '名前', '会社名', '部署', '役職'];
-            var table = document.querySelector("table");
-            //ヘッダー（TH）
-            var row = table.insertRow(-1);
-            var th0 = document.createElement("th");
-            row.appendChild(th0);
-            for (var i = 0; i < header.length; i++) {
-                var th = document.createElement("th");
-                row.appendChild(th);
-                th.innerHTML = header[i];
-                th.width = 100;
+            lists();
+            //テーブル
+            async function lists() {
+                let member = await callApi();
+                let td = document.getElementById("list");
+                member.forEach(function (value) {
+                    td.insertAdjacentHTML('beforeend', `<tr><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                });
             }
-            table.width = 30 + 100 * header.length;
 
-            //データ行（TR）
-            for (var r = 1; r <= 100; r++) {
-                var row = table.insertRow(-1);
-                var cell1 = row.insertCell(-1);
-                for (c = 1; c <= header.length; c++) {
-                    var cell = row.insertCell(-1);
-                    cell.className = 'value';
-                    cell.setAttribute('contenteditable', 'true');
-                    cell.setAttribute('id', 'R' + r + 'C' + c);
+            function textClick() {
+                let parent = document.getElementById('parent');
+                //子要素取得
+                let members = document.getElementsByClassName('member');
+                //子要素数取得
+                let len = members.length;
+                for (let i = 0; i < len; i++) {
+                    parent.removeChild(members[0]);
                 }
             }
+
+
+
+            // //value.idをidsに格納
+            // const ids = value.id;
+            // console.log(ids);
+            // //id昇順
+            // const idsSortedByAsc = ids.sort((a, b) => a - b);
+            // console.log(idsSortedByAsc);
+            // //id降順
+            // const idsSortedByDesc = ids.sort((a, b) => b - a);
+            // console.log(idsSortedByDesc);
+            // const names = value.name;
+            // const companys = value.company;
+            // const divisions = value.division;
+            // const titles = value.title;
         </script>
     </body>
 </html>
