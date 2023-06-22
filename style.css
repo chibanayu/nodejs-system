@@ -1,19 +1,16 @@
-table {
+@charset "UTF-8";
+
+table, th, td {
+  border: 1px #111 solid;
   border-collapse: collapse;
-  table-layout: fixed;
-}
-th {
-  border: 1px solid grey;
-  padding: 3px 10px;
-  background: #1362d8;
-  font-weight: bold;
-  text-align: center;
-  color: #fff;
 }
 
-.value {
-  border: 1px solid grey;
-  padding: 3px 10px;
-  cursor: pointer;
-  width: 100px;
+th {
+  color: #fff;
+  background-color: #777;
+  width: 160px;
+}
+
+td {
+  text-align: center;
 }
