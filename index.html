@@ -19,8 +19,8 @@
                     <th onclick="textClick()">役職</th>
                 </tr>
             </thead>
-            <tbody id="parent">
-                <tr class="member">
+            <tbody>
+                <tr>
                 </tr>
             </tbody>
         </table>
@@ -31,35 +31,51 @@
                 const users = await res.json();
                 return users;
             }
-            async function lists() {
-                let member = await callApi();
-                member.forEach(function (value) {
-                    let up = document.querySelector('#up');
-                    up.insertAdjacentHTML('beforeend', `<li>ID${value.id}　名前${value.name}　会社名${value.company}　部署${value.division}　役職${value.title}</li>`);
-                });
-            }
-            lists();
             //テーブル
             async function lists() {
                 let member = await callApi();
                 let td = document.getElementById("list");
                 member.forEach(function (value) {
-                    td.insertAdjacentHTML('beforeend', `<tr><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                    td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                 });
             }
+            lists();
 
             function textClick() {
-                let parent = document.getElementById('parent');
+                //変数宣言
+                let list = document.getElementById('list');
                 //子要素取得
                 let members = document.getElementsByClassName('member');
                 //子要素数取得
                 let len = members.length;
                 for (let i = 0; i < len; i++) {
-                    parent.removeChild(members[0]);
+                    list.removeChild(members[0]);
                 }
+                async function lists() {
+                    let member = await callApi();
+                    let td = document.getElementById("list");
+                    //変数を用意
+                    let numA = 0;
+                    let numB = 1;
+                    if (numA == 0) {
+                        //id降順
+                        member.sort(function (a, b) {
+                            return b.id - a.id;
+                        });
+                    }
+                    else if (numB == 1) {
+                        //id昇順
+                        member.sort(function (a, b) {
+                            return a.id - b.id;
+                        });
+                    }
+                    //memberを繰り返してブラウザに表示
+                    member.forEach(function (value) {
+                        td.insertAdjacentHTML('beforeend', `<tr><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                    });
+                }
+                lists();
             }
-
-
 
             // //value.idをidsに格納
             // const ids = value.id;
