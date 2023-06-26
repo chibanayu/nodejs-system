@@ -15,6 +15,11 @@ td {
   text-align: center;
 }
 
-.box {
+.flex {
   display: flex;
+}
+
+select {
+  font-size: 16px;
+  margin: 10px 0 0 20px;
 }

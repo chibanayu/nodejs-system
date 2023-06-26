@@ -8,27 +8,31 @@
         <title>システム構築課題</title>
     </head>
     <body>
-        <div class="box">
-            <select id="select1">
-                <option value="1">ID</option>
-                <option value="2">名前</option>
-                <option value="3">会社名</option>
-                <option value="4">部署</option>
-                <option value="5">役職</option>
-            </select>
-            <table>
-                <thead>
-                    <tr>
-                        <th onclick="textClick()">ID</th>
-                        <th onclick="textClickName()">名前</th>
-                        <th onclick="textClickCompany()">会社名</th>
-                        <th onclick="textClickDivision()">部署</th>
-                        <th onclick="textClickTitle()">役職</th>
-                    </tr>
-                </thead>
-                <tbody id="list">
-                </tbody>
-            </table>
+        <div class="flex">
+            <div class="tbl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th onclick="textClick()">ID</th>
+                            <th onclick="textClickName()">名前</th>
+                            <th onclick="textClickCompany()">会社名</th>
+                            <th onclick="textClickDivision()">部署</th>
+                            <th onclick="textClickTitle()">役職</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list">
+                    </tbody>
+                </table>
+            </div>
+            <div class="selectbox">
+                <select id="select1">
+                    <option value="1">ID</option>
+                    <option value="2">名前</option>
+                    <option value="3">会社名</option>
+                    <option value="4">部署</option>
+                    <option value="5">役職</option>
+                </select>
+            </div>
         </div>
         <script>
             //data.jsonを持ってきてusersで使えるようにする
