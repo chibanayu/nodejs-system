@@ -31,7 +31,7 @@
                 const users = await res.json();
                 return users;
             }
-            //テーブル
+            //テーブルとして表示させる
             async function lists() {
                 let member = await callApi();
                 let td = document.getElementById("list");
@@ -55,15 +55,15 @@
                     let member = await callApi();
                     let td = document.getElementById("list");
                     //変数を用意
-                    let numA = 0;
-                    let numB = 1;
-                    if (numA == 0) {
+                    let num = 0;
+                    if (num == 0) {
                         //id降順
                         member.sort(function (a, b) {
                             return b.id - a.id;
                         });
-                    }
-                    else if (numB == 1) {
+                        //変数numに1を再代入
+                        num = 1;
+                    } else if (num == 1) {
                         //id昇順
                         member.sort(function (a, b) {
                             return a.id - b.id;
@@ -76,20 +76,6 @@
                 }
                 lists();
             }
-
-            // //value.idをidsに格納
-            // const ids = value.id;
-            // console.log(ids);
-            // //id昇順
-            // const idsSortedByAsc = ids.sort((a, b) => a - b);
-            // console.log(idsSortedByAsc);
-            // //id降順
-            // const idsSortedByDesc = ids.sort((a, b) => b - a);
-            // console.log(idsSortedByDesc);
-            // const names = value.name;
-            // const companys = value.company;
-            // const divisions = value.division;
-            // const titles = value.title;
         </script>
     </body>
 </html>
