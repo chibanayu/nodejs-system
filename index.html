@@ -34,7 +34,7 @@
                 </select>
             </div>
             <p><input text="type" placeholder="検索キーワードを入力"></p>
-            <p><button onclick="buttonClick()">検索</button></p>
+            <p><button onclick="buttonClick">検索</button></p>
         </div>
         <script>
             //data.jsonを持ってきてusersで使えるようにする
@@ -52,6 +52,7 @@
                 });
             }
             lists();
+
             //ID
             let num = 0;
             function textClick() {
@@ -237,10 +238,28 @@
                 }
                 sortChange5();
             }
-
-            //検索ボタンの関数
+            //検索ボタン
             function buttonClick() {
-            
+                let list = document.getElementById('list');
+                //子要素取得
+                let members = document.getElementsByClassName('member');
+                //子要素数取得
+                let len = members.length;
+                for (let i = 0; i < len; i++) {
+                    list.removeChild(members[0]);
+                }
+                async function lists() {
+                    let member = await callApi();
+                    console.log(member);
+                }
+                //文字列を検索
+                if (member.id.indexOf() != -1)
+                return member;
+                //ブラウザに表示
+                member.forEach(function (value) {
+                    td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                });
+                lists();
             }
         </script>
     </body>
