@@ -33,8 +33,8 @@
                     <option value="5">役職</option>
                 </select>
             </div>
-            <p><input text="type" placeholder="検索キーワードを入力"></p>
-            <p><button onclick="buttonClick">検索</button></p>
+            <p><input text="type" id="nameText" placeholder="検索キーワードを入力"></p>
+            <p><button id=checkButton onclick="buttonClick">検索</button></p>
         </div>
         <script>
             //data.jsonを持ってきてusersで使えるようにする
@@ -240,6 +240,7 @@
             }
             //検索ボタン
             function buttonClick() {
+                //100件の情報を消す機能
                 let list = document.getElementById('list');
                 //子要素取得
                 let members = document.getElementsByClassName('member');
@@ -253,14 +254,18 @@
                     console.log(member);
                 }
                 //文字列を検索
-                if (member.id.indexOf() != -1)
-                return member;
+                if (member.id == id) {
+                    (member.id.indexOf() != -1)
+                }
                 //ブラウザに表示
                 member.forEach(function (value) {
                     td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                 });
                 lists();
             }
+            //変数宣言
+            let nameText = document.getElementById('nameText');
+            let checkButton = document.getElementById('checkButton');
         </script>
     </body>
 </html>
