@@ -26,15 +26,15 @@
             </div>
             <div class="selectbox">
                 <select id="select1">
-                    <option value="1">ID</option>
-                    <option value="2">名前</option>
-                    <option value="3">会社名</option>
-                    <option value="4">部署</option>
-                    <option value="5">役職</option>
+                    <option>ID</option>
+                    <option>名前</option>
+                    <option>会社名</option>
+                    <option>部署</option>
+                    <option>役職</option>
                 </select>
             </div>
-            <p><input text="type"></p>
-            <p><button>検索</button></p>
+            <p><input text="type" placeholder="検索キーワードを入力"></p>
+            <p><button onclick="buttonClick()">検索</button></p>
         </div>
         <script>
             //data.jsonを持ってきてusersで使えるようにする
@@ -52,7 +52,7 @@
                 });
             }
             lists();
-
+            //ID
             let num = 0;
             function textClick() {
                 //変数宣言
@@ -90,6 +90,7 @@
                 sortChange1();
             }
 
+            //名前
             let num1 = 0;
             function textClickName() {
                 //変数宣言
@@ -126,6 +127,7 @@
                 sortChange2();
             }
 
+            //会社名
             let num2 = 0;
             function textClickCompany() {
                 //変数宣言
@@ -162,6 +164,7 @@
                 sortChange3();
             }
 
+            //部署
             let num3 = 0;
             function textClickDivision() {
                 //変数宣言
@@ -198,6 +201,7 @@
                 sortChange4();
             }
 
+            //役職
             let num4 = 0;
             function textClickTitle() {
                 //変数宣言
@@ -232,6 +236,11 @@
                     });
                 }
                 sortChange5();
+            }
+
+            //検索ボタンが押されたら
+            function buttonClick() {
+
             }
         </script>
     </body>
