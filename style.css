@@ -21,5 +21,13 @@ td {
 
 select {
   font-size: 16px;
-  margin: 10px 0 0 20px;
+  margin: 20px 0 0 20px;
+}
+
+input {
+  margin-left: 20px;
+}
+
+button {
+  margin-left: 20px;
 }
