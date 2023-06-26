@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th onclick="textClick()">ID</th>
-                    <th onclick="textClick()">名前</th>
+                    <th onclick="textClickName()">名前</th>
                     <th onclick="textClick()">会社名</th>
                     <th onclick="textClick()">部署</th>
                     <th onclick="textClick()">役職</th>
@@ -38,6 +38,7 @@
             }
             lists();
 
+            let num = 0;
             function textClick() {
                 //変数宣言
                 let list = document.getElementById('list');
@@ -48,11 +49,10 @@
                 for (let i = 0; i < len; i++) {
                     list.removeChild(members[0]);
                 }
-                async function sortChange() {
+                async function sortChange1() {
                     let member = await callApi();
                     let td = document.getElementById("list");
                     //変数を用意
-                    let num = 0;
                     if (num == 0) {
                         //id降順
                         member.sort(function (a, b) {
@@ -65,13 +65,48 @@
                         member.sort(function (a, b) {
                             return a.id - b.id;
                         });
+                        num = 0;
                     }
                     //memberを繰り返してブラウザに表示
                     member.forEach(function (value) {
                         td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                     });
                 }
-                sortChange();
+                sortChange1();
+            }
+
+            let num1 = 0;
+            function textClickName() {
+                //変数宣言
+                let list = document.getElementById('list');
+                //子要素取得
+                let members = document.getElementsByClassName('member');
+                //子要素数取得
+                let len = members.length;
+                for (let i = 0; i < len; i++) {
+                    list.removeChild(members[0]);
+                }
+                async function sortChange2() {
+                    let member = await callApi();
+                    let td = document.getElementById("list");
+                    //変数を用意
+                    if (num1 == 0) {
+                        //名前をソート
+                        member.sort((a, b) => {
+                            return a.name.localeCompare(b.name, 'ja');
+                        });
+                        //変数num1に1を再代入
+                        num1 = 1;
+                    } else {
+                        member.sort();
+                        num1 = 0;
+                    }
+                    //memberを繰り返してブラウザに表示
+                    member.forEach(function (value) {
+                        td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                    });
+                }
+                sortChange2();
             }
         </script>
     </body>
