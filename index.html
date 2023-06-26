@@ -68,7 +68,7 @@
                     }
                     //memberを繰り返してブラウザに表示
                     member.forEach(function (value) {
-                        td.insertAdjacentHTML('beforeend', `<tr><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                        td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                     });
                 }
                 sortChange();
