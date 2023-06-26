@@ -51,7 +51,7 @@
                 for (let i = 0; i < len; i++) {
                     list.removeChild(members[0]);
                 }
-                async function lists() {
+                async function sortChange() {
                     let member = await callApi();
                     let td = document.getElementById("list");
                     //変数を用意
@@ -74,7 +74,7 @@
                         td.insertAdjacentHTML('beforeend', `<tr><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                     });
                 }
-                lists();
+                sortChange();
             }
         </script>
     </body>
