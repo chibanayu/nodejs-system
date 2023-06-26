@@ -14,3 +14,7 @@ th {
 td {
   text-align: center;
 }
+
+.box {
+  display: flex;
+}

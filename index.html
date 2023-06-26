@@ -8,19 +8,28 @@
         <title>システム構築課題</title>
     </head>
     <body>
-        <table>
-            <thead>
-                <tr>
-                    <th onclick="textClick()">ID</th>
-                    <th onclick="textClickName()">名前</th>
-                    <th onclick="textClickCompany()">会社名</th>
-                    <th onclick="textClickDivision()">部署</th>
-                    <th onclick="textClickTitle()">役職</th>
-                </tr>
-            </thead>
-            <tbody id="list">
-            </tbody>
-        </table>
+        <div class="box">
+            <select id="select1">
+                <option value="1">ID</option>
+                <option value="2">名前</option>
+                <option value="3">会社名</option>
+                <option value="4">部署</option>
+                <option value="5">役職</option>
+            </select>
+            <table>
+                <thead>
+                    <tr>
+                        <th onclick="textClick()">ID</th>
+                        <th onclick="textClickName()">名前</th>
+                        <th onclick="textClickCompany()">会社名</th>
+                        <th onclick="textClickDivision()">部署</th>
+                        <th onclick="textClickTitle()">役職</th>
+                    </tr>
+                </thead>
+                <tbody id="list">
+                </tbody>
+            </table>
+        </div>
         <script>
             //data.jsonを持ってきてusersで使えるようにする
             async function callApi() {
@@ -98,7 +107,9 @@
                         //変数num1に1を再代入
                         num1 = 1;
                     } else {
-                        member.sort();
+                        member.sort((a, b) => {
+                            return b.name.localeCompare(a.name, 'ja');
+                        });
                         num1 = 0;
                     }
                     //memberを繰り返してブラウザに表示
@@ -132,7 +143,9 @@
                         //変数num2に1を再代入
                         num2 = 1;
                     } else {
-                        member.sort();
+                        member.sort((a, b) => {
+                            return b.company.localeCompare(a.company, 'ja');
+                        });
                         num2 = 0;
                     }
                     //memberを繰り返してブラウザに表示
@@ -166,7 +179,9 @@
                         //変数num3に1を再代入
                         num3 = 1;
                     } else {
-                        member.sort();
+                        member.sort((a, b) => {
+                            return b.division.localeCompare(a.division, 'ja');
+                        });
                         num3 = 0;
                     }
                     //memberを繰り返してブラウザに表示
@@ -200,7 +215,9 @@
                         //変数num4に1を再代入
                         num4 = 1;
                     } else {
-                        member.sort();
+                        member.sort((a, b) => {
+                            return b.title.localeCompare(a.title, 'ja');
+                        });
                         num4 = 0;
                     }
                     //memberを繰り返してブラウザに表示
