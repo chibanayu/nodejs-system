@@ -238,6 +238,9 @@
                 }
                 sortChange5();
             }
+            //変数宣言
+            let checkButton = document.getElementById('checkButton');
+            checkButton.addEventListener('click', buttonClick);
             //検索ボタン
             function buttonClick() {
                 //100件の情報を消す機能
@@ -265,8 +268,6 @@
                 }
                 search();
             }
-            //変数宣言
-            let checkButton = document.getElementById('checkButton');
         </script>
     </body>
 </html>
