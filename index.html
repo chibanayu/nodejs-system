@@ -52,7 +52,6 @@
                 });
             }
             lists();
-
             //ID
             let num = 0;
             function textClick() {
@@ -90,7 +89,6 @@
                 }
                 sortChange1();
             }
-
             //名前
             let num1 = 0;
             function textClickName() {
@@ -127,7 +125,6 @@
                 }
                 sortChange2();
             }
-
             //会社名
             let num2 = 0;
             function textClickCompany() {
@@ -164,7 +161,6 @@
                 }
                 sortChange3();
             }
-
             //部署
             let num3 = 0;
             function textClickDivision() {
@@ -201,7 +197,6 @@
                 }
                 sortChange4();
             }
-
             //役職
             let num4 = 0;
             function textClickTitle() {
@@ -238,9 +233,6 @@
                 }
                 sortChange5();
             }
-            //変数宣言
-            let checkButton = document.getElementById('checkButton');
-            checkButton.addEventListener('click', buttonClick);
             //検索ボタン
             function buttonClick() {
                 //100件の情報を消す機能
@@ -252,14 +244,15 @@
                 for (let i = 0; i < len; i++) {
                     list.removeChild(members[0]);
                 }
-                let input = document.getElementById('searchText');
-                let id = input.value;
                 async function search() {
                     let member = await callApi();
-                    console.log(member);
+                    let td = document.getElementById("list");
+                    let input = document.getElementById('searchText').value;
+                    let id = input.value;
                     //文字列を検索
-                    if (member.id.indexOf() != -1) {
-                        member.id == id
+                    let memberId = input.indexOf(id) != -1
+                    if (member.id > 0) {
+                        value.id = member.id;
                     }
                     //ブラウザに表示
                     member.forEach(function (value) {
@@ -268,6 +261,9 @@
                 }
                 search();
             }
+            //変数宣言
+            let checkButton = document.getElementById('checkButton');
+            checkButton.addEventListener('click', buttonClick);
         </script>
     </body>
 </html>
