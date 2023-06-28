@@ -34,7 +34,17 @@
                 </select>
             </form>
             <p><input text="type" id="searchText" placeholder="検索キーワードを入力"></p>
-            <p><button id=checkButton>検索</button></p>
+            <p><button id=checkButton1>検索</button></p>
+            <form class="form2">
+                <h3>　　　　＜新規情報追加＞</h3>
+                <p>名前　<input text="type" ></p>
+                <p>会社名<input text="type"></p>
+                <p>部署　<input text="type"></p>
+                <p>役職　<input text="type"></p>
+                <div class="btn1">
+                    <p><button id=checkButton2>作成</button></p>
+                </div>
+            </form>
         </div>
         <script>
             //data.jsonを持ってきてusersで使えるようにする
@@ -236,7 +246,7 @@
 
             //下記からIDを検索して表示させる機能を記述
             //検索ボタン
-            function buttonClick() {
+            function buttonClick1() {
                 //100件の情報を消す機能
                 let list = document.getElementById('list');
                 //子要素取得
@@ -289,10 +299,8 @@
                 });
             }
             //変数宣言
-            let checkButton = document.getElementById('checkButton');
-            checkButton.addEventListener('click', buttonClick);
-            // let selectBox = document.getElementById('selectBox');
-            // selectBox.addEventListener('click', selectClick);
+            let checkButton1 = document.getElementById('checkButton1');
+            checkButton1.addEventListener('click', buttonClick1);
 
             //下記から名前を検索して表示させる機能を記述
             //member持ってくる
@@ -393,6 +401,13 @@
                     td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                 });
             }
+
+            //新規情報追加追加の作成ボタン
+            function buttonClick2() {
+            }
+            //変数宣言
+            let checkButton2 = document.getElementById('checkButton2');
+            checkButton2.addEventListener('click', buttonClick2);
         </script>
     </body>
 </html>
