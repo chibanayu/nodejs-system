@@ -244,27 +244,29 @@
                 for (let i = 0; i < len; i++) {
                     list.removeChild(members[0]);
                 }
+                usersSearch();
             }
             //member持ってくる
-            async function lists() {
+            async function usersSearch() {
                 let member = await callApi();
-                console.log(member);
+                let newMember = [];
                 let td = document.getElementById("list");
                 //100回繰り返す
                 for (let i = 0; i < member.length; i++) {
-                    let input = document.getElementById('searchText').value;
-                    let id = input.value;
+                    let input = document.getElementById('searchText');
+                    let getValue = input.value;
+                    let getId = member[i].id;
                     //文字列を検索
-                    let members = member.indexOf(member[i].id) != -1
-                    if (member[i].id > 0) {
-                        member[i].id == input.value;
+                    let members = String(getId).indexOf(getValue);
+                    if (member[i].id == getValue) {
                         console.log(member[i].id);
+                        newMember.push(member[i]);
                     }
-                    //ブラウザに表示
-                    member.forEach(function (value) {
-                        td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
-                    });
                 }
+                //ブラウザに表示
+                newMember.forEach(function (value) {
+                    td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                });
             }
             //変数宣言
             let checkButton = document.getElementById('checkButton');
