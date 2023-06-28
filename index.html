@@ -24,17 +24,17 @@
                     </tbody>
                 </table>
             </div>
-            <div class="selectbox">
-                <select id="select1">
+            <form name="form1">
+                <select name="select1" id=selectBox>
                     <option value="1">ID</option>
                     <option value="2">名前</option>
                     <option value="3">会社名</option>
                     <option value="4">部署</option>
                     <option value="5">役職</option>
                 </select>
-            </div>
+            </form>
             <p><input text="type" id="searchText" placeholder="検索キーワードを入力"></p>
-            <p><button id=checkButton onclick="buttonClick">検索</button></p>
+            <p><button id=checkButton>検索</button></p>
         </div>
         <script>
             //data.jsonを持ってきてusersで使えるようにする
@@ -246,7 +246,24 @@
                 for (let i = 0; i < len; i++) {
                     list.removeChild(members[0]);
                 }
-                usersSearch();
+                let select1 = document.form1.select1;
+                let selectNum = select1.selectedIndex;
+                let str = select1.options[selectNum].value;
+                if (str == 1) {
+                    usersSearch();
+                }
+                if (str == 2) {
+                    usersSearch1();
+                }
+                if (str == 3) {
+                    usersSearch2();
+                }
+                if (str == 4) {
+                    usersSearch3();
+                }
+                if (str == 5) {
+                    usersSearch4();
+                }
             }
             //member持ってくる
             async function usersSearch() {
@@ -273,20 +290,10 @@
             //変数宣言
             let checkButton = document.getElementById('checkButton');
             checkButton.addEventListener('click', buttonClick);
+            // let selectBox = document.getElementById('selectBox');
+            // selectBox.addEventListener('click', selectClick);
 
             //下記から名前を検索して表示させる機能を記述
-            function buttonClick1() {
-                //100件の情報を消す機能
-                let list = document.getElementById('list');
-                //子要素取得
-                let members = document.getElementsByClassName('member');
-                //子要素数取得
-                let len = members.length;
-                for (let i = 0; i < len; i++) {
-                    list.removeChild(members[0]);
-                }
-                usersSearch1();
-            }
             //member持ってくる
             async function usersSearch1() {
                 let member = await callApi();
@@ -310,23 +317,8 @@
                     td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                 });
             }
-            //変数宣言
-            let checkButton1 = document.getElementById('checkButton');
-            checkButton1.addEventListener('click', buttonClick1);
 
             //下記から会社名を検索して表示させる機能を記述
-            function buttonClick2() {
-                //100件の情報を消す機能
-                let list = document.getElementById('list');
-                //子要素取得
-                let members = document.getElementsByClassName('member');
-                //子要素数取得
-                let len = members.length;
-                for (let i = 0; i < len; i++) {
-                    list.removeChild(members[0]);
-                }
-                usersSearch2();
-            }
             //member持ってくる
             async function usersSearch2() {
                 let member = await callApi();
@@ -350,23 +342,8 @@
                     td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                 });
             }
-            //変数宣言
-            let checkButton2 = document.getElementById('checkButton');
-            checkButton2.addEventListener('click', buttonClick2);
 
             //下記から部署を検索して表示させる機能を記述
-            function buttonClick3() {
-                //100件の情報を消す機能
-                let list = document.getElementById('list');
-                //子要素取得
-                let members = document.getElementsByClassName('member');
-                //子要素数取得
-                let len = members.length;
-                for (let i = 0; i < len; i++) {
-                    list.removeChild(members[0]);
-                }
-                usersSearch3();
-            }
             //member持ってくる
             async function usersSearch3() {
                 let member = await callApi();
@@ -390,23 +367,8 @@
                     td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                 });
             }
-            //変数宣言
-            let checkButton3 = document.getElementById('checkButton');
-            checkButton3.addEventListener('click', buttonClick3);
 
             //下記から役職を検索して表示させる機能を記述
-            function buttonClick4() {
-                //100件の情報を消す機能
-                let list = document.getElementById('list');
-                //子要素取得
-                let members = document.getElementsByClassName('member');
-                //子要素数取得
-                let len = members.length;
-                for (let i = 0; i < len; i++) {
-                    list.removeChild(members[0]);
-                }
-                usersSearch4();
-            }
             //member持ってくる
             async function usersSearch4() {
                 let member = await callApi();
@@ -430,9 +392,6 @@
                     td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                 });
             }
-            //変数宣言
-            let checkButton4 = document.getElementById('checkButton');
-            checkButton4.addEventListener('click', buttonClick4);
         </script>
     </body>
 </html>
