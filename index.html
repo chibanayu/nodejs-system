@@ -244,22 +244,27 @@
                 for (let i = 0; i < len; i++) {
                     list.removeChild(members[0]);
                 }
-                async function search() {
-                    let member = await callApi();
-                    let td = document.getElementById("list");
+            }
+            //member持ってくる
+            async function lists() {
+                let member = await callApi();
+                console.log(member);
+                let td = document.getElementById("list");
+                //100回繰り返す
+                for (let i = 0; i < member.length; i++) {
                     let input = document.getElementById('searchText').value;
                     let id = input.value;
                     //文字列を検索
-                    let memberId = input.indexOf(id) != -1
-                    if (member.id > 0) {
-                        value.id = member.id;
+                    let members = member.indexOf(member[i].id) != -1
+                    if (member[i].id > 0) {
+                        member[i].id == input.value;
+                        console.log(member[i].id);
                     }
                     //ブラウザに表示
                     member.forEach(function (value) {
                         td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
                     });
                 }
-                search();
             }
             //変数宣言
             let checkButton = document.getElementById('checkButton');
