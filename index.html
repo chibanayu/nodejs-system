@@ -233,6 +233,8 @@
                 }
                 sortChange5();
             }
+
+            //下記からIDを検索して表示させる機能を記述
             //検索ボタン
             function buttonClick() {
                 //100件の情報を消す機能
@@ -271,6 +273,166 @@
             //変数宣言
             let checkButton = document.getElementById('checkButton');
             checkButton.addEventListener('click', buttonClick);
+
+            //下記から名前を検索して表示させる機能を記述
+            function buttonClick1() {
+                //100件の情報を消す機能
+                let list = document.getElementById('list');
+                //子要素取得
+                let members = document.getElementsByClassName('member');
+                //子要素数取得
+                let len = members.length;
+                for (let i = 0; i < len; i++) {
+                    list.removeChild(members[0]);
+                }
+                usersSearch1();
+            }
+            //member持ってくる
+            async function usersSearch1() {
+                let member = await callApi();
+                //空の配列を用意する
+                let newMember1 = [];
+                let td = document.getElementById("list");
+                //100回繰り返す
+                for (let i = 0; i < member.length; i++) {
+                    let input = document.getElementById('searchText');
+                    let getValue1 = input.value;
+                    let getName = member[i].name;
+                    //文字列を検索
+                    let members = getName.indexOf(getValue1);
+                    if (members !== -1) {
+                        //空の配列に追加する
+                        newMember1.push(member[i]);
+                    }
+                }
+                //ブラウザに表示
+                newMember1.forEach(function (value) {
+                    td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                });
+            }
+            //変数宣言
+            let checkButton1 = document.getElementById('checkButton');
+            checkButton1.addEventListener('click', buttonClick1);
+
+            //下記から会社名を検索して表示させる機能を記述
+            function buttonClick2() {
+                //100件の情報を消す機能
+                let list = document.getElementById('list');
+                //子要素取得
+                let members = document.getElementsByClassName('member');
+                //子要素数取得
+                let len = members.length;
+                for (let i = 0; i < len; i++) {
+                    list.removeChild(members[0]);
+                }
+                usersSearch2();
+            }
+            //member持ってくる
+            async function usersSearch2() {
+                let member = await callApi();
+                //空の配列を用意する
+                let newMember2 = [];
+                let td = document.getElementById("list");
+                //100回繰り返す
+                for (let i = 0; i < member.length; i++) {
+                    let input = document.getElementById('searchText');
+                    let getValue2 = input.value;
+                    let getCompany = member[i].company;
+                    //文字列を検索
+                    let members = getCompany.indexOf(getValue2);
+                    if (members !== -1) {
+                        //空の配列に追加する
+                        newMember2.push(member[i]);
+                    }
+                }
+                //ブラウザに表示
+                newMember2.forEach(function (value) {
+                    td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                });
+            }
+            //変数宣言
+            let checkButton2 = document.getElementById('checkButton');
+            checkButton2.addEventListener('click', buttonClick2);
+
+            //下記から部署を検索して表示させる機能を記述
+            function buttonClick3() {
+                //100件の情報を消す機能
+                let list = document.getElementById('list');
+                //子要素取得
+                let members = document.getElementsByClassName('member');
+                //子要素数取得
+                let len = members.length;
+                for (let i = 0; i < len; i++) {
+                    list.removeChild(members[0]);
+                }
+                usersSearch3();
+            }
+            //member持ってくる
+            async function usersSearch3() {
+                let member = await callApi();
+                //空の配列を用意する
+                let newMember3 = [];
+                let td = document.getElementById("list");
+                //100回繰り返す
+                for (let i = 0; i < member.length; i++) {
+                    let input = document.getElementById('searchText');
+                    let getValue3 = input.value;
+                    let getDivision = member[i].division;
+                    //文字列を検索
+                    let members = getDivision.indexOf(getValue3);
+                    if (members !== -1) {
+                        //空の配列に追加する
+                        newMember3.push(member[i]);
+                    }
+                }
+                //ブラウザに表示
+                newMember3.forEach(function (value) {
+                    td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                });
+            }
+            //変数宣言
+            let checkButton3 = document.getElementById('checkButton');
+            checkButton3.addEventListener('click', buttonClick3);
+
+            //下記から役職を検索して表示させる機能を記述
+            function buttonClick4() {
+                //100件の情報を消す機能
+                let list = document.getElementById('list');
+                //子要素取得
+                let members = document.getElementsByClassName('member');
+                //子要素数取得
+                let len = members.length;
+                for (let i = 0; i < len; i++) {
+                    list.removeChild(members[0]);
+                }
+                usersSearch4();
+            }
+            //member持ってくる
+            async function usersSearch4() {
+                let member = await callApi();
+                //空の配列を用意する
+                let newMember4 = [];
+                let td = document.getElementById("list");
+                //100回繰り返す
+                for (let i = 0; i < member.length; i++) {
+                    let input = document.getElementById('searchText');
+                    let getValue4 = input.value;
+                    let getTitle = member[i].title;
+                    //文字列を検索
+                    let members = getTitle.indexOf(getValue4);
+                    if (members !== -1) {
+                        //空の配列に追加する
+                        newMember4.push(member[i]);
+                    }
+                }
+                //ブラウザに表示
+                newMember4.forEach(function (value) {
+                    td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
+                });
+            }
+            //変数宣言
+            let checkButton4 = document.getElementById('checkButton');
+            checkButton4.addEventListener('click', buttonClick4);
         </script>
     </body>
 </html>
