@@ -42,7 +42,7 @@
                 <p>部署　<input type="text" id="newDivision" placeholder="⚪︎⚪︎部"></p>
                 <p>役職　<input type="text" id="newTitle" placeholder="役職がある方のみ入力"></p>
                 <div class="btn1">
-                    <p><button type="addition" id=addition onclick="buttonClick2()">作成</button></p>
+                    <p><button id="addition" onclick="buttonClick2()">作成</button></p>
                 </div>
             </form>
         </div>
@@ -414,41 +414,34 @@
                 //名前が空だった場合
                 if (newName.value == "") {
                     alert("名前が未入力です。");
-                    return false;
                 }
                 //名前が正しく入力されていなかった場合
                 if (!newName.value.match(reg1)) {
                     alert("名前を漢字で入力してください。");
-                    return false;
                 }
                 //会社名の正規表現
                 let reg2 = /[\u4E00-\u9FFF]/
                 //会社名が空だった場合
                 if (newCompany.value == "") {
                     alert("会社名が未入力です。");
-                    return false;
                 }
                 //会社名が正しく入力されていなかった場合
                 if (!newCompany.value.match(reg2)) {
                     alert("会社名を漢字で入力してください。");
-                    return false;
                 }
                 //部署の正規表現
                 let reg3 = /[\u4E00-\u9FFF]/
                 //部署が空だった場合
                 if (newDivision.value == "") {
                     alert("部署が未入力です。");
-                    return false;
                 }
                 //部署が正しく入力されていなかった場合
                 if (!newDivision.value.match(reg3)) {
                     alert("部署を漢字で入力してください。");
-                    return false;
                 }
-                //trueだったら追加される
+                //関数userAddition()を実行
                     userAddition();
                     console.log('追加します');
-                    return true;
             }
             function userAddition() {
                 //insertAdjacentHTMLを使うために親要素のidを取得
