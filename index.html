@@ -446,11 +446,11 @@
                     return false;
                 }
                 //trueだったら追加される
-                userAddition();
-                console.log('追加します');
-                return true;
+                    userAddition();
+                    console.log('追加します');
+                    return true;
             }
-            async function userAddition() {
+            function userAddition() {
                 //insertAdjacentHTMLを使うために親要素のidを取得
                 let element = document.getElementById('list');
                 //各項目の変数宣言
