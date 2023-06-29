@@ -37,12 +37,12 @@
             <p><button id=checkButton1>検索</button></p>
             <form class="form2">
                 <h3>　　　　＜新規情報追加＞</h3>
-                <p>名前　<input type="text" id="newName" value=""></p>
-                <p>会社名<input type="text" id="newCompany" value=""></p>
-                <p>部署　<input type="text" id="newDivision" value=""></p>
-                <p>役職　<input type="text" id="newTitle" value=""></p>
+                <p>名前　<input type="text" id="newName"></p>
+                <p>会社名<input type="text" id="newCompany" placeholder="⚪︎⚪︎株式会社"></p>
+                <p>部署　<input type="text" id="newDivision" placeholder="⚪︎⚪︎部"></p>
+                <p>役職　<input type="text" id="newTitle" placeholder="役職がある方のみ入力"></p>
                 <div class="btn1">
-                    <p><button type="addition" id=addition onclick="return buttonClick2()">作成</button></p>
+                    <p><button type="addition" id=addition onclick="buttonClick2()">作成</button></p>
                 </div>
             </form>
         </div>
@@ -402,7 +402,7 @@
                 });
             }
 
-            //新規情報追加追加の作成ボタン
+            //新規情報追加の作成ボタン
             function buttonClick2() {
                 //各項目の変数宣言
                 let newName = document.getElementById('newName');
@@ -429,7 +429,7 @@
                     return false;
                 }
                 //会社名が正しく入力されていなかった場合
-                if (!newCompany.value.match(reg1)) {
+                if (!newCompany.value.match(reg2)) {
                     alert("会社名を漢字で入力してください。");
                     return false;
                 }
@@ -441,38 +441,25 @@
                     return false;
                 }
                 //部署が正しく入力されていなかった場合
-                if (!newDivision.value.match(reg1)) {
+                if (!newDivision.value.match(reg3)) {
                     alert("部署を漢字で入力してください。");
                     return false;
                 }
-                //役職の正規表現
-                let reg4 = /[\u4E00-\u9FFF]/
-                //役職が空だった場合
-                if (newTitle.value == "") {
-                    alert("役職が未入力です。");
-                    return false;
-                }
-                //役職が正しく入力されていなかった場合
-                if (!newTitle.value.match(reg1)) {
-                    alert("役職を漢字で入力してください。");
-                    return false;
-                }
                 //trueだったら追加される
+                userAddition();
+                console.log('追加します');
                 return true;
-                usersSearch5();
             }
-            async function usersSearch5() {
-                let member = await callApi();
-                console.log(member);
-                // //空の配列を用意する
-                let td = document.getElementById("list");
-                // //100回繰り返す
-                // for (let i = 0; i < member.length; i++) {
-                // }
-                member.push(member[i]);
-                member.forEach(function (value) {
-                    td.insertAdjacentHTML('beforeend', `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`);
-                });
+            async function userAddition() {
+                //insertAdjacentHTMLを使うために親要素のidを取得
+                let element = document.getElementById('list');
+                //各項目の変数宣言
+                let inputName = document.getElementById('newName');
+                let inputCompany = document.getElementById('newCompany');
+                let inputDivision = document.getElementById('newDivision');
+                let inputTitle = document.getElementById('newTitle');
+                //新規情報を追加したときにブラウザに表示
+                element.insertAdjacentHTML('afterend', `<tr class="member"><td>101</td><td>${inputName.value}</td><td>${inputCompany.value}</td><td>${inputDivision.value}</td><td>${inputTitle.value}</td></tr>`);
             }
         </script>
     </body>
