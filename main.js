@@ -187,7 +187,7 @@ async function sortChange5() {
     );
   });
 }
-//下記からIDを検索して表示させる機能を記述
+//IDを検索して表示させる機能を記述
 //検索ボタン
 function buttonClick1() {
   //100件の情報を消す機能
@@ -246,7 +246,7 @@ async function usersSearch() {
 //変数宣言
 let checkButton1 = document.getElementById("checkButton1");
 checkButton1.addEventListener("click", buttonClick1);
-//下記から名前を検索して表示させる機能を記述
+//名前を検索して表示させる機能を記述
 //member持ってくる
 async function usersSearch1() {
   let member = await callApi();
@@ -273,7 +273,7 @@ async function usersSearch1() {
     );
   });
 }
-//下記から会社名を検索して表示させる機能を記述
+//会社名を検索して表示させる機能を記述
 //member持ってくる
 async function usersSearch2() {
   let member = await callApi();
@@ -300,7 +300,7 @@ async function usersSearch2() {
     );
   });
 }
-//下記から部署を検索して表示させる機能を記述
+//部署を検索して表示させる機能を記述
 //member持ってくる
 async function usersSearch3() {
   let member = await callApi();
@@ -327,7 +327,7 @@ async function usersSearch3() {
     );
   });
 }
-//下記から役職を検索して表示させる機能を記述
+//役職を検索して表示させる機能を記述
 //member持ってくる
 async function usersSearch4() {
   let member = await callApi();
