@@ -18,6 +18,7 @@ async function lists() {
 lists();
 
 //100件の情報を消す機能
+//↑この機能を使うところでdeleteList()を実行すればいい良い
 function deleteList() {
   //変数宣言
   let list = document.getElementById("list");
