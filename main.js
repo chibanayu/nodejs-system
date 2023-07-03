@@ -17,7 +17,6 @@ async function lists() {
 }
 lists();
 //ID
-let num = 0;
 function textClick() {
   //変数宣言
   let list = document.getElementById("list");
@@ -30,6 +29,7 @@ function textClick() {
   }
   sortChange1();
 }
+let num = 0;
 async function sortChange1() {
   let member = await callApi();
   let td = document.getElementById("list");
@@ -58,7 +58,6 @@ async function sortChange1() {
 }
 
 //名前
-let num1 = 0;
 function textClickName() {
   //変数宣言
   let list = document.getElementById("list");
@@ -69,35 +68,35 @@ function textClickName() {
   for (let i = 0; i < len; i++) {
     list.removeChild(members[0]);
   }
-  async function sortChange2() {
-    let member = await callApi();
-    let td = document.getElementById("list");
-    //変数を用意
-    if (num1 == 0) {
-      //名前をソート
-      member.sort((a, b) => {
-        return a.name.localeCompare(b.name, "ja");
-      });
-      //変数num1に1を再代入
-      num1 = 1;
-    } else {
-      member.sort((a, b) => {
-        return b.name.localeCompare(a.name, "ja");
-      });
-      num1 = 0;
-    }
-    //memberを繰り返してブラウザに表示
-    member.forEach(function (value) {
-      td.insertAdjacentHTML(
-        "beforeend",
-        `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
-      );
-    });
-  }
   sortChange2();
 }
+let num1 = 0;
+async function sortChange2() {
+  let member = await callApi();
+  let td = document.getElementById("list");
+  //変数を用意
+  if (num1 == 0) {
+    //名前をソート
+    member.sort((a, b) => {
+      return a.name.localeCompare(b.name, "ja");
+    });
+    //変数num1に1を再代入
+    num1 = 1;
+  } else {
+    member.sort((a, b) => {
+      return b.name.localeCompare(a.name, "ja");
+    });
+    num1 = 0;
+  }
+  //memberを繰り返してブラウザに表示
+  member.forEach(function (value) {
+    td.insertAdjacentHTML(
+      "beforeend",
+      `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
+    );
+  });
+}
 //会社名
-let num2 = 0;
 function textClickCompany() {
   //変数宣言
   let list = document.getElementById("list");
@@ -108,35 +107,35 @@ function textClickCompany() {
   for (let i = 0; i < len; i++) {
     list.removeChild(members[0]);
   }
-  async function sortChange3() {
-    let member = await callApi();
-    let td = document.getElementById("list");
-    //変数を用意
-    if (num2 == 0) {
-      //会社名をソート
-      member.sort((a, b) => {
-        return a.company.localeCompare(b.company, "ja");
-      });
-      //変数num2に1を再代入
-      num2 = 1;
-    } else {
-      member.sort((a, b) => {
-        return b.company.localeCompare(a.company, "ja");
-      });
-      num2 = 0;
-    }
-    //memberを繰り返してブラウザに表示
-    member.forEach(function (value) {
-      td.insertAdjacentHTML(
-        "beforeend",
-        `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
-      );
-    });
-  }
   sortChange3();
 }
+let num2 = 0;
+async function sortChange3() {
+  let member = await callApi();
+  let td = document.getElementById("list");
+  //変数を用意
+  if (num2 == 0) {
+    //会社名をソート
+    member.sort((a, b) => {
+      return a.company.localeCompare(b.company, "ja");
+    });
+    //変数num2に1を再代入
+    num2 = 1;
+  } else {
+    member.sort((a, b) => {
+      return b.company.localeCompare(a.company, "ja");
+    });
+    num2 = 0;
+  }
+  //memberを繰り返してブラウザに表示
+  member.forEach(function (value) {
+    td.insertAdjacentHTML(
+      "beforeend",
+      `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
+    );
+  });
+}
 //部署
-let num3 = 0;
 function textClickDivision() {
   //変数宣言
   let list = document.getElementById("list");
@@ -147,35 +146,36 @@ function textClickDivision() {
   for (let i = 0; i < len; i++) {
     list.removeChild(members[0]);
   }
-  async function sortChange4() {
-    let member = await callApi();
-    let td = document.getElementById("list");
-    //変数を用意
-    if (num3 == 0) {
-      //部署をソート
-      member.sort((a, b) => {
-        return a.division.localeCompare(b.division, "ja");
-      });
-      //変数num3に1を再代入
-      num3 = 1;
-    } else {
-      member.sort((a, b) => {
-        return b.division.localeCompare(a.division, "ja");
-      });
-      num3 = 0;
-    }
-    //memberを繰り返してブラウザに表示
-    member.forEach(function (value) {
-      td.insertAdjacentHTML(
-        "beforeend",
-        `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
-      );
-    });
-  }
   sortChange4();
 }
+let num3 = 0;
+async function sortChange4() {
+  let member = await callApi();
+  let td = document.getElementById("list");
+  //変数を用意
+  if (num3 == 0) {
+    //部署をソート
+    member.sort((a, b) => {
+      return a.division.localeCompare(b.division, "ja");
+    });
+    //変数num3に1を再代入
+    num3 = 1;
+  } else {
+    member.sort((a, b) => {
+      return b.division.localeCompare(a.division, "ja");
+    });
+    num3 = 0;
+  }
+  //memberを繰り返してブラウザに表示
+  member.forEach(function (value) {
+    td.insertAdjacentHTML(
+      "beforeend",
+      `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
+    );
+  });
+}
+
 //役職
-let num4 = 0;
 function textClickTitle() {
   //変数宣言
   let list = document.getElementById("list");
@@ -186,32 +186,33 @@ function textClickTitle() {
   for (let i = 0; i < len; i++) {
     list.removeChild(members[0]);
   }
-  async function sortChange5() {
-    let member = await callApi();
-    let td = document.getElementById("list");
-    //変数を用意
-    if (num4 == 0) {
-      //役職をソート
-      member.sort((a, b) => {
-        return a.title.localeCompare(b.title, "ja");
-      });
-      //変数num4に1を再代入
-      num4 = 1;
-    } else {
-      member.sort((a, b) => {
-        return b.title.localeCompare(a.title, "ja");
-      });
-      num4 = 0;
-    }
-    //memberを繰り返してブラウザに表示
-    member.forEach(function (value) {
-      td.insertAdjacentHTML(
-        "beforeend",
-        `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
-      );
-    });
-  }
   sortChange5();
+}
+let num4 = 0;
+async function sortChange5() {
+  let member = await callApi();
+  let td = document.getElementById("list");
+  //変数を用意
+  if (num4 == 0) {
+    //役職をソート
+    member.sort((a, b) => {
+      return a.title.localeCompare(b.title, "ja");
+    });
+    //変数num4に1を再代入
+    num4 = 1;
+  } else {
+    member.sort((a, b) => {
+      return b.title.localeCompare(a.title, "ja");
+    });
+    num4 = 0;
+  }
+  //memberを繰り返してブラウザに表示
+  member.forEach(function (value) {
+    td.insertAdjacentHTML(
+      "beforeend",
+      `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
+    );
+  });
 }
 //下記からIDを検索して表示させる機能を記述
 //検索ボタン
