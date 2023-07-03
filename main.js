@@ -28,34 +28,35 @@ function textClick() {
   for (let i = 0; i < len; i++) {
     list.removeChild(members[0]);
   }
-  async function sortChange1() {
-    let member = await callApi();
-    let td = document.getElementById("list");
-    //変数を用意
-    if (num == 0) {
-      //id降順
-      member.sort(function (a, b) {
-        return b.id - a.id;
-      });
-      //変数numに1を再代入
-      num = 1;
-    } else if (num == 1) {
-      //id昇順
-      member.sort(function (a, b) {
-        return a.id - b.id;
-      });
-      num = 0;
-    }
-    //memberを繰り返してブラウザに表示
-    member.forEach(function (value) {
-      td.insertAdjacentHTML(
-        "beforeend",
-        `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
-      );
-    });
-  }
   sortChange1();
 }
+async function sortChange1() {
+  let member = await callApi();
+  let td = document.getElementById("list");
+  //変数を用意
+  if (num == 0) {
+    //id降順
+    member.sort(function (a, b) {
+      return b.id - a.id;
+    });
+    //変数numに1を再代入
+    num = 1;
+  } else if (num == 1) {
+    //id昇順
+    member.sort(function (a, b) {
+      return a.id - b.id;
+    });
+    num = 0;
+  }
+  //memberを繰り返してブラウザに表示
+  member.forEach(function (value) {
+    td.insertAdjacentHTML(
+      "beforeend",
+      `<tr class="member"><td>${value.id}</td><td>${value.name}</td><td>${value.company}</td><td>${value.division}</td><td>${value.title}</td></tr>`
+    );
+  });
+}
+
 //名前
 let num1 = 0;
 function textClickName() {
@@ -212,7 +213,6 @@ function textClickTitle() {
   }
   sortChange5();
 }
-
 //下記からIDを検索して表示させる機能を記述
 //検索ボタン
 function buttonClick1() {
@@ -272,7 +272,6 @@ async function usersSearch() {
 //変数宣言
 let checkButton1 = document.getElementById("checkButton1");
 checkButton1.addEventListener("click", buttonClick1);
-
 //下記から名前を検索して表示させる機能を記述
 //member持ってくる
 async function usersSearch1() {
@@ -300,7 +299,6 @@ async function usersSearch1() {
     );
   });
 }
-
 //下記から会社名を検索して表示させる機能を記述
 //member持ってくる
 async function usersSearch2() {
@@ -328,7 +326,6 @@ async function usersSearch2() {
     );
   });
 }
-
 //下記から部署を検索して表示させる機能を記述
 //member持ってくる
 async function usersSearch3() {
@@ -356,7 +353,6 @@ async function usersSearch3() {
     );
   });
 }
-
 //下記から役職を検索して表示させる機能を記述
 //member持ってくる
 async function usersSearch4() {
@@ -384,7 +380,6 @@ async function usersSearch4() {
     );
   });
 }
-
 //新規情報追加の作成ボタン
 function buttonClick2() {
   //各項目の変数宣言
@@ -431,7 +426,6 @@ function buttonClick2() {
   //関数userAddition()を実行
   userAddition();
 }
-
 let result = 100;
 function userAddition() {
   //insertAdjacentHTMLを使うために親要素のidを取得
@@ -440,29 +434,27 @@ function userAddition() {
   let inputName = document.getElementById("newName");
   let inputCompany = document.getElementById("newCompany");
   let inputDivision = document.getElementById("newDivision");
-    let inputTitle = document.getElementById("newTitle");
-    async function countId() {
-        //空の配列を用意する
-        let getIdArray = [];
-        let member = await callApi();
-        let td = document.getElementById("list");
-        for (let i = 0; i < member.length; i++) {
-            let getId = member[i].id;
-            //空の配列に追加する
-            getIdArray.push(getId);
-        }
-        function buttonClick3() {
-            result++;
-            console.log(result);
-            //新規情報を追加したときにブラウザに表示
-            element.insertAdjacentHTML(
-                "beforeend",
-                `<tr class="member"><td>${result}</td><td>${inputName.value}</td><td>${inputCompany.value}</td><td>${inputDivision.value}</td><td>${inputTitle.value}</td></tr>`
-            );
-        }
-        buttonClick3();
+  let inputTitle = document.getElementById("newTitle");
+  async function countId() {
+    //空の配列を用意する
+    let getIdArray = [];
+    let member = await callApi();
+    let td = document.getElementById("list");
+    for (let i = 0; i < member.length; i++) {
+      let getId = member[i].id;
+      //空の配列に追加する
+      getIdArray.push(getId);
     }
+    function buttonClick3() {
+      result++;
+      console.log(result);
+      //新規情報を追加したときにブラウザに表示
+      element.insertAdjacentHTML(
+        "beforeend",
+        `<tr class="member"><td>${result}</td><td>${inputName.value}</td><td>${inputCompany.value}</td><td>${inputDivision.value}</td><td>${inputTitle.value}</td></tr>`
+      );
+    }
+    buttonClick3();
+  }
   countId();
 }
-
-//あいうえお
