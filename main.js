@@ -16,8 +16,9 @@ async function lists() {
   });
 }
 lists();
-//ID
-function textClick() {
+
+//100件の情報を消す機能
+function deleteList() {
   //変数宣言
   let list = document.getElementById("list");
   //子要素取得
@@ -27,6 +28,10 @@ function textClick() {
   for (let i = 0; i < len; i++) {
     list.removeChild(members[0]);
   }
+}
+//ID
+function textClick() {
+  deleteList();
   sortChange1();
 }
 let num = 0;
@@ -59,15 +64,7 @@ async function sortChange1() {
 
 //名前
 function textClickName() {
-  //変数宣言
-  let list = document.getElementById("list");
-  //子要素取得
-  let members = document.getElementsByClassName("member");
-  //子要素数取得
-  let len = members.length;
-  for (let i = 0; i < len; i++) {
-    list.removeChild(members[0]);
-  }
+  deleteList();
   sortChange2();
 }
 let num1 = 0;
@@ -98,15 +95,7 @@ async function sortChange2() {
 }
 //会社名
 function textClickCompany() {
-  //変数宣言
-  let list = document.getElementById("list");
-  //子要素取得
-  let members = document.getElementsByClassName("member");
-  //子要素数取得
-  let len = members.length;
-  for (let i = 0; i < len; i++) {
-    list.removeChild(members[0]);
-  }
+  deleteList();
   sortChange3();
 }
 let num2 = 0;
@@ -137,15 +126,7 @@ async function sortChange3() {
 }
 //部署
 function textClickDivision() {
-  //変数宣言
-  let list = document.getElementById("list");
-  //子要素取得
-  let members = document.getElementsByClassName("member");
-  //子要素数取得
-  let len = members.length;
-  for (let i = 0; i < len; i++) {
-    list.removeChild(members[0]);
-  }
+  deleteList();
   sortChange4();
 }
 let num3 = 0;
@@ -177,15 +158,7 @@ async function sortChange4() {
 
 //役職
 function textClickTitle() {
-  //変数宣言
-  let list = document.getElementById("list");
-  //子要素取得
-  let members = document.getElementsByClassName("member");
-  //子要素数取得
-  let len = members.length;
-  for (let i = 0; i < len; i++) {
-    list.removeChild(members[0]);
-  }
+  deleteList();
   sortChange5();
 }
 let num4 = 0;
