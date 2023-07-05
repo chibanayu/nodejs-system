@@ -63,12 +63,14 @@ async function sortChange1() {
   });
 }
 
+//ソートする機能を使いまわせるようにまとめる
 async function rearranges1(type1, type2) {
   type1.sort((a, b) => {
     return a[type2].localeCompare(b[type2], "ja");
   });
 }
 
+//ソートする機能を使いまわせるようにまとめる
 async function rearranges2(type1, type2) {
   type1.sort((a, b) => {
     return b[type2].localeCompare(a[type2], "ja");
