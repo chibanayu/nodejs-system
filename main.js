@@ -63,27 +63,35 @@ async function sortChange1() {
   });
 }
 
+async function rearranges1(type1, type2) {
+  type1.sort((a, b) => {
+    return a[type2].localeCompare(b[type2], "ja");
+  });
+}
+
+async function rearranges2(type1, type2) {
+  type1.sort((a, b) => {
+    return b[type2].localeCompare(a[type2], "ja");
+  });
+}
+
 //名前
+let num1 = 0;
 function textClickName() {
   deleteList();
   sortChange2();
 }
-let num1 = 0;
 async function sortChange2() {
   let member = await callApi();
   let td = document.getElementById("list");
   //変数を用意
   if (num1 == 0) {
     //名前をソート
-    member.sort((a, b) => {
-      return a.name.localeCompare(b.name, "ja");
-    });
-    //変数num1に1を再代入
+    rearranges1(member, "name");
+    // 変数num1に1を再代入
     num1 = 1;
   } else {
-    member.sort((a, b) => {
-      return b.name.localeCompare(a.name, "ja");
-    });
+    rearranges2(member, "name");
     num1 = 0;
   }
   //memberを繰り返してブラウザに表示
@@ -95,26 +103,22 @@ async function sortChange2() {
   });
 }
 //会社名
+let num2 = 0;
 function textClickCompany() {
   deleteList();
   sortChange3();
 }
-let num2 = 0;
 async function sortChange3() {
   let member = await callApi();
   let td = document.getElementById("list");
   //変数を用意
   if (num2 == 0) {
     //会社名をソート
-    member.sort((a, b) => {
-      return a.company.localeCompare(b.company, "ja");
-    });
+    rearranges1(member, "company");
     //変数num2に1を再代入
     num2 = 1;
   } else {
-    member.sort((a, b) => {
-      return b.company.localeCompare(a.company, "ja");
-    });
+    rearranges2(member, "company");
     num2 = 0;
   }
   //memberを繰り返してブラウザに表示
@@ -126,26 +130,22 @@ async function sortChange3() {
   });
 }
 //部署
+let num3 = 0;
 function textClickDivision() {
   deleteList();
   sortChange4();
 }
-let num3 = 0;
 async function sortChange4() {
   let member = await callApi();
   let td = document.getElementById("list");
   //変数を用意
   if (num3 == 0) {
     //部署をソート
-    member.sort((a, b) => {
-      return a.division.localeCompare(b.division, "ja");
-    });
+    rearranges1(member, "division");
     //変数num3に1を再代入
     num3 = 1;
   } else {
-    member.sort((a, b) => {
-      return b.division.localeCompare(a.division, "ja");
-    });
+    rearranges2(member, "division");
     num3 = 0;
   }
   //memberを繰り返してブラウザに表示
@@ -158,26 +158,22 @@ async function sortChange4() {
 }
 
 //役職
+let num4 = 0;
 function textClickTitle() {
   deleteList();
   sortChange5();
 }
-let num4 = 0;
 async function sortChange5() {
   let member = await callApi();
   let td = document.getElementById("list");
   //変数を用意
   if (num4 == 0) {
     //役職をソート
-    member.sort((a, b) => {
-      return a.title.localeCompare(b.title, "ja");
-    });
+    rearranges1(member, "title");
     //変数num4に1を再代入
     num4 = 1;
   } else {
-    member.sort((a, b) => {
-      return b.title.localeCompare(a.title, "ja");
-    });
+    rearranges2(member, "title");
     num4 = 0;
   }
   //memberを繰り返してブラウザに表示
